@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Invoice</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            font-size: 16px;
+            line-height: 24px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+        .invoice-box table {
+            width: 100%;
+            line-height: inherit;
+            text-align: left;
+        }
+        .invoice-box table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+        .invoice-box table tr td:nth-child(2) {
+            text-align: right;
+        }
+        .invoice-box table tr.top table td {
+            padding-bottom: 20px;
+        }
+        .invoice-box table tr.top table td.title {
+            font-size: 45px;
+            line-height: 45px;
+            color: #333;
+        }
+        .invoice-box table tr.information table td {
+            padding-bottom: 40px;
+        }
+        .invoice-box table tr.heading td {
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+        .invoice-box table tr.details td {
+            padding-bottom: 20px;
+        }
+        .invoice-box table tr.item td {
+            border-bottom: 1px solid #eee;
+        }
+        .invoice-box table tr.item.last td {
+            border-bottom: none;
+        }
+        .invoice-box table tr.total td:nth-child(2) {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+        }
+        .invoice-box .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .print-button-container {
+            max-width: 800px;
+            margin: auto;
+            text-align: right;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" th:href="@{/}">Pet Adoption</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/pets}">Pets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="print-button-container">
+        <button class="btn btn-primary" onclick="window.print()">Print</button>
+    </div>
+    <div class="invoice-box">
+        <div class="invoice-header">
+            <h2 class="title">Pet Adoption</h2>
+            <div>
+                Invoice #: <span th:text="${invoiceId}"></span><br>
+                Date: <span th:text="${date}"></span><br>
+            </div>
+        </div>
+        <table cellpadding="0" cellspacing="0">
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                Customer ID: <span th:text="${customer.id}"></span><br>
+                                Bill to: <br>
+                                <span th:text="${customer.name}"></span>,<br>
+                                <span th:text="${customer.address}"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="heading">
+                <td>Pet ID</td>
+                <td>Name</td>
+                <td>Breed</td>
+                <td>Type</td>
+                <td>Fee</td>
+            </tr>
+            <tr class="details">
+                <td><span th:text="${pet.id}"></span></td>
+                <td><span th:text="${pet.name}"></span></td>
+                <td><span th:text="${pet.petBreed.name}"></span></td>
+                <td><span th:text="${pet.petType.type}"></span></td>
+                <td>RM<span th:text="${pet.fee}"></span></td>
+            </tr>
+            <tr class="heading">
+                <td>Payment</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Price</td>
+            </tr>
+            <tr class="item">
+                <td>Pet Adoption Fee</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>RM<span th:text="${pet.fee}"></span></td>
+            </tr>
+            <tr class="item last">
+                <td>Service Tax</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>RM5.00</td>
+            </tr>
+            <tr class="total">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total:</td>
+                <td>RM<span th:text="${pet.fee + 5}"></span></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

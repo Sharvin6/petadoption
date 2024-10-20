@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pets</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Forum&display=swap">
+    <style>
+        body {
+            font-family: 'Forum', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://wallpapers.com/images/featured/dog-wj7msvc5kj9v6cyy.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: black !important;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .container {
+            margin-top: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .pet-type {
+            margin-bottom: 20px;
+        }
+        .pet-breed-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .pet-breed {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+        }
+        .pet-name {
+            font-family: 'Abril Fatface', cursive;
+            font-weight: bold;
+            text-align: center;
+        }
+        .pet-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        h1, h2 {
+            font-family: 'Abril Fatface', cursive;
+            font-weight: bold;
+        }
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" th:href="@{/}">Pet Adoption</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" th:href="@{/pets}">Pets <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="text-center">Pets</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="border-bottom">Dog Breeds</h2>
+                <div th:each="typeEntry : ${petTypes}" th:if="${typeEntry.type == 'Dog'}" class="pet-type">
+                    <div class="pet-breed-row">
+                        <div th:each="breed, iterStat : ${typeEntry.breeds}" class="pet-breed">
+                            <div class="card">
+                                <img th:src="${iterStat.index == 0 ? 'https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg' : iterStat.index == 1 ? 'https://cdn.britannica.com/69/234469-050-B883797B/Rottweiler-dog.jpg' : iterStat.index == 2 ? 'https://media-be.chewy.com/wp-content/uploads/2021/05/13111454/GettyImages-521009590-923x615.jpg' : '/images/default_dog.jpg'}" alt="Image of breed" class="card-img-top pet-image">
+                                <div class="card-body">
+                                    <h5 class="card-title pet-name" th:text="${breed.name}">Breed</h5>
+                                    <a th:href="@{/breed-details/{id}(id=${breed.id})}" class="btn btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h2 class="border-bottom">Cat Breeds</h2>
+                <div th:each="typeEntry : ${petTypes}" th:if="${typeEntry.type == 'Cat'}" class="pet-type">
+                    <div class="pet-breed-row">
+                        <div th:each="breed, iterStat : ${typeEntry.breeds}" class="pet-breed">
+                            <div class="card">
+                                <img th:src="${iterStat.index == 0 ? 'https://www.thesprucepets.com/thmb/rGHMbBtaCIBzjOQJaFEeDG3ViHs=/2941x0/filters:no_upscale():strip_icc()/persian-cats-gallery-4121944-hero-f5c237b8c6404655afb1e1bbae219ba5.jpg' : iterStat.index == 1 ? 'https://www.catster.com/wp-content/uploads/2023/11/Siamese-Cat_Andreas-LischkaPixabay.jpg' : iterStat.index == 2 ? 'https://www.thesprucepets.com/thmb/MzKr6fC-v8W4D4oz2p9wWCwAFms=/2119x0/filters:no_upscale():strip_icc()/GettyImages-1189893683-e0ff70596b3b4f0687ba573e5a671f74.jpg' : '/images/default_cat.jpg'}" alt="Image of breed" class="card-img-top pet-image">
+                                <div class="card-body">
+                                    <h5 class="card-title pet-name" th:text="${breed.name}">Breed</h5>
+                                    <a th:href="@{/breed-details/{id}(id=${breed.id})}" class="btn btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

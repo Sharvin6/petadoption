@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List of Pets</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" th:href="@{/staff/management}">Main Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="container">
+        <h2>List of Pets</h2>
+        <h2 th:text="'Number of pets: ' + ${pets.size()}">Number of pets</h2>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Color</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Breed</th>
+                    <th>Fee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pet : ${pets}">
+                    <td th:text="${pet.id}"></td>
+                    <td th:text="${pet.name}"></td>
+                    <td th:text="${pet.age}"></td>
+                    <td th:text="${pet.gender}"></td>
+                    <td th:text="${pet.color}"></td>
+                    <td th:text="${pet.description}"></td>
+                    <td th:text="${pet.petType.type}"></td>
+                    <td th:text="${pet.petBreed.name}"></td>
+                    <td>RM<span th:text="${pet.fee}"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

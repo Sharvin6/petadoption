@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Pet</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#" th:href="@{/staff/management}">Main Menu</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<div class="container">
+    <h2>Edit Pet</h2>
+    <form th:object="${pet}" th:action="@{/update-pet}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Enter pet name">
+        </div>
+        <div class="form-group">
+            <label for="petType">Type:</label>
+            <select class="form-control" id="petType" th:field="*{petType}">
+                <option value="" disabled selected>Select Type</option>
+                <option th:each="type : ${petTypes}" th:value="${type.id}" th:text="${type.id + ' - ' + type.type}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="petBreed">Breed:</label>
+            <select class="form-control" id="petBreed" th:field="*{petBreed}">
+                <option value="" disabled selected>Select Breed</option>
+                <option th:each="breed : ${petBreeds}" th:value="${breed.id}" th:text="${breed.id + ' - ' + breed.name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select class="form-control" id="gender" th:field="*{gender}">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="color">Color:</label>
+            <input type="text" class="form-control" id="color" th:field="*{color}" placeholder="Enter pet color">
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="text" class="form-control" id="age" th:field="*{age}" placeholder="Enter pet age">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" th:field="*{description}" placeholder="Enter pet description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="fee">Fee:</label>
+            <input type="number" class="form-control" id="fee" th:field="*{fee}" placeholder="Enter pet fee">
+        </div>
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" class="form-control" id="image" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+</body>
+</html>

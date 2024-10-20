@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&display=swap">
+    <style>
+        body {
+            font-family: 'Forum', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://wallpapers.com/images/featured/dog-wj7msvc5kj9v6cyy.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: right;
+        }
+        .login-button {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            background-color: #333;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #fff;
+        }
+        .login-button:hover {
+            background-color: #555;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -2px -2px 4px rgba(255, 255, 255, 0.7);
+            font-weight: bold;
+        }
+        .get-started-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #000000;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #fff;
+            margin-bottom: 30px;
+        }
+        .get-started-button:hover {
+            background-color: #000000;
+        }
+        .founders {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        .founder {
+            margin: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .founder img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%; /* Make the image circular */
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .founder p {
+            color: white;
+            font-size: 1.5em; /* Increase font size */
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #000;
+            transition: transform 0.3s ease-in-out;
+        }
+        .founder:hover {
+            transform: translateY(-10px);
+        }
+        .founder:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+    <title>Pet Adoption Platform</title>
+</head>
+<body>
+<header>
+    <a href="/staff-login" class="login-button">Login</a>
+</header>
+<main>
+    <h1>Welcome to the Pet Adoption Platform</h1>
+    <a href="/pets" class="get-started-button">Get Started</a>
+    <div class="founders">
+        <div class="founder">
+            <img src="https://media.licdn.com/dms/image/D5603AQF2OMMcQtrgXg/profile-displayphoto-shrink_200_200/0/1711804941934?e=2147483647&v=beta&t=yJ96nD2-bXwzFlNhiQFMER6P1H3St73dY-rnlRFuQPw" alt="Founder 1">
+            <p>SHARVIN SELVARAJ <br>216890</p>
+        </div>
+        <div class="founder">
+            <img src="https://media.licdn.com/dms/image/D5603AQHpRTOT9jy66g/profile-displayphoto-shrink_200_200/0/1701803941640?e=2147483647&v=beta&t=y-mX0-s8sbUeRK9fOAHGgE5hBKI6wgci7uhS25DFnuM" alt="Founder 2">
+            <p>THIBAAN RAJ<br>217109</p>
+        </div>
+        <div class="founder">
+            <img src="https://media.licdn.com/dms/image/D5603AQFl1O1Tk3TMVw/profile-displayphoto-shrink_200_200/0/1711342085642?e=2147483647&v=beta&t=cv-j__-aRTW2zhsZtpenU_AQYPOHTluvldkGui9pbj0" alt="Founder 3">
+            <p>KAVINRAJ<br>215356</p>
+        </div>
+    </div>
+</main>
+</body>
+</html>

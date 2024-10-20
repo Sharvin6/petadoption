@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Staff Management</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" th:href="@{/staff/management}">Main Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav">
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" th:href="@{/}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Staff Management</h2>
+                <ul>
+                    <li><a th:href="@{/staff/list}">List of Staff</a></li>
+                    <li><a th:href="@{/staff/create}">Create Staff</a></li>
+                    <li><a th:href="@{/staff/edit}">Edit Staff</a></li>
+                    <li><a th:href="@{/staff/delete}">Delete Staff</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Pet Management</h2>
+                <ul>
+                    <li><a th:href="@{/staff/listofpets}">List of Pets</a></li>
+                    <li><a th:href="@{/staff/createpet}">Create Pet</a></li>
+                    <li><a th:href="@{/pet-details}">Edit Pet</a></li>
+                    <li><a th:href="@{/staff/delete-pet}">Delete Pet</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Customer Management</h2>
+                <ul>
+                    <li><a th:href="@{/customer-adoption-details}">Customer Adoption Details</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

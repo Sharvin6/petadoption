@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Breed Details</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Forum&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Forum', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://wallpapers.com/images/featured/dog-wj7msvc5kj9v6cyy.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8) !important;
+        }
+        .container {
+            margin-top: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .pet {
+            margin-bottom: 20px;
+        }
+        .pet-name {
+            font-weight: bold;
+            text-align: center;
+        }
+        .pet-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .btn-adopt {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" th:href="@{/}">Pet Adoption</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" th:href="@{/pets}">Pets <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="text-center" th:text="'Details of ' + ${breed.name}">Breed Details</h1>
+        <h2 class="text-center" th:text="'Number of pets: ' + ${pets.size()}">Number of pets</h2>
+        <div class="row">
+            <div th:each="pet : ${pets}" class="col-md-4 pet">
+                <div class="card">
+                    <img th:src="@{${pet.image_url}}" alt="Image of pet" class="card-img-top pet-image">
+                    <div class="card-body">
+                        <h5 class="card-title pet-name" th:text="${pet.name}">Pet Name</h5>
+                        <p class="card-text" th:text="'Age: ' + ${pet.age}">Pet Age</p>
+                        <p class="card-text" th:text="'Gender: ' + ${pet.gender}">Pet Gender</p>
+                        <p class="card-text" th:text="'Color: ' + ${pet.color}">Pet Color</p>
+                        <p class="card-text" th:text="'Description: ' + ${pet.description}">Pet Description</p>
+                        <p class="card-text" th:text="'Fee: RM' + ${pet.fee}">Pet Fee</p>
+                        <div class="btn-adopt">
+                            <a th:href="@{/adopt-form/{id}(id=${pet.id})}" class="btn btn-success">Adopt Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
